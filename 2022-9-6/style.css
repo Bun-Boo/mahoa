@@ -1,0 +1,27 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    width: 50px;
+}
+
+.container{
+    margin-top: 30vh;
+}
+
+table{
+    /* border:  red solid 1px; */
+    margin: 0 auto;
+}
+
+td.button {
+    text-align: center;
+}
+
+p#cipher_text{
+    font-size: xx-large;
+}
