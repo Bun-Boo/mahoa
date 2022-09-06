@@ -17,7 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -33,7 +32,7 @@
                 <tr>
                     <td>Key</td>
                     <td>
-                        <input type="number" id="key_encrypt" min="0" value="0">
+                        <input type="number" id="key_encrypt" min="0" value="0" onkeypress="inputValid(event)">
                     </td>
                 </tr>
                 <tr>
@@ -62,7 +61,7 @@
                 <tr>
                     <td>Key</td>
                     <td>
-                        <input type="number" id="key_decrypt" min="0" value="0">
+                        <input type="number" id="key_decrypt" min="0" value="0" onkeypress="inputValid(event)">
                     </td>
                 </tr>
                 <tr>
@@ -80,6 +79,7 @@
         </div>
     </div>
    
+    <script src="main.js"></script>
 
 </body>
 </html>

@@ -12,6 +12,13 @@ function int2char(i){
     return arr[i]
 }
 
+function inputValid(e) {
+    let invalidChars = ["-","+","e","E"];
+    if(invalidChars.includes(e.key)) {
+        e.preventDefault();
+    }
+}
+
 function encrypt(){
     let plain_text = document.getElementById('input_plain_text').value.toUpperCase();
     let key = Number.parseInt(document.getElementById('key_encrypt').value);
@@ -19,7 +26,6 @@ function encrypt(){
     let cipher_text = document.getElementById('cipher_text');
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let result = "";
-
     if(key!=="")
     {
         while(key<0)  
