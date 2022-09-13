@@ -25,3 +25,12 @@ td.button {
 p#cipher_text{
     font-size: xx-large;
 }
+
+p#plain_text{
+    font-size: xx-large;
+}
+
+textarea{
+    max-height: 20vh;
+    min-height: 20vh;
+}

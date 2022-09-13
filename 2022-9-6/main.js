@@ -22,7 +22,6 @@ function inputValid(e) {
 function encrypt(){
     let plain_text = document.getElementById('input_plain_text').value.toUpperCase();
     let key = Number.parseInt(document.getElementById('key_encrypt').value);
-    let result_title = document.getElementById('result_title');
     let cipher_text = document.getElementById('cipher_text');
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let result = "";
@@ -41,9 +40,15 @@ function encrypt(){
             else
                 result+=ch;
         }     
-        result_title.innerHTML = "Cipher Text:"
         cipher_text.innerHTML = result;
     }
+    // if(result!=="")
+    //     handleSaveFile(result,"ciphertext.txt");
+}
+
+const saveFileEncrypt = () => {
+    result = document.getElementById("cipher_text").innerHTML;
+    handleSaveFile(result,"ciphertext.txt");
 }
 
 
@@ -51,7 +56,6 @@ function encrypt(){
 function decrypt(){
     let cipher_text = document.getElementById('input_cipher_text').value.toUpperCase();
     let key = Number.parseInt(document.getElementById('key_decrypt').value);
-    let result_title = document.getElementById('result2_title');
     let plain_text = document.getElementById('plain_text');
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let result = "";
@@ -72,7 +76,39 @@ function decrypt(){
             else
                 result+=ch;
         }     
-        result_title.innerHTML = "Plain Text:"
         plain_text.innerHTML = result;
     }
+    // if(result!=="")
+    //     handleSaveFile(result,"plaintext.txt");
 }
+
+const saveFileDecrypt = () => {
+    result = document.getElementById("plain_text").innerHTML;
+    if(result!=="")
+        handleSaveFile(result,"plaintext.txt");
+}
+
+async function handleSaveFile(result,fileName){
+    if( window.showSaveFilePicker ) {
+      const handle = await showSaveFilePicker({
+        suggestedName: fileName,
+        types: [{
+          description: 'txt',
+          accept: {
+            'text/markdown': ['.txt'],
+          },    
+        }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write( result );
+      writable.close();
+    }
+    else {
+      const SaveFile = document.createElement( "a" );
+      SaveFile.href = URL.createObjectURL( result );
+      SaveFile.download= fileName;
+      SaveFile.click();
+      setTimeout(() => URL.revokeObjectURL( SaveFile.href ), 60000 );
+    }
+  }
+
